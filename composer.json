@@ -14,7 +14,8 @@
     "autoload": {
         "psr-4": {
             "Application\\": "src/Application",
-            "Cinema\\": "src/Cinema"
+            "Cinema\\": "src/Cinema",
+            "Meeting\\": "src/Meeting"
         }
     },
     "require-dev": {
