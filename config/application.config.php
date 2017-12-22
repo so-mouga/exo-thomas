@@ -20,8 +20,20 @@ use Cinema\Factory\FilmControllerFactory;
 use Cinema\Factory\FilmRepositoryFactory;
 use Cinema\Factory\ShowFilmControllerFactory;
 use Cinema\Repository\FilmRepository;
+use Meeting\Controller\CommunityController;
 use Meeting\Controller\MeetingController;
+use Meeting\Controller\ShowMeetingController;
+use Meeting\Controller\UserController;
+use Meeting\Factory\CommunityControllerFactory;
+use Meeting\Factory\CommunityRepositoryFactory;
 use Meeting\Factory\MeetingControllerFactory;
+use Meeting\Factory\MeetingRepositoryFactory;
+use Meeting\Factory\ShowMeetingControllerFactory;
+use Meeting\Factory\UserControllerFactory;
+use Meeting\Factory\UserRepositoryFactory;
+use Meeting\Repository\CommunityRepository;
+use Meeting\Repository\MeetingRepository;
+use Meeting\Repository\UserRepository;
 
 return [
     'factories' => [
@@ -44,6 +56,12 @@ return [
 
         // Configurations liées aux Meeting
         MeetingController::class => MeetingControllerFactory::class,
-        \Meeting\Repository\MeetingRepository::class => \Meeting\Factory\MeetingRepositoryFactory::class,
+        ShowMeetingController::class => ShowMeetingControllerFactory::class,
+        MeetingRepository::class => MeetingRepositoryFactory::class,
+        UserRepository::class => UserRepositoryFactory::class,
+        UserController::class => UserControllerFactory::class,
+        CommunityRepository::class => CommunityRepositoryFactory::class,
+        CommunityController::class => CommunityControllerFactory::class,
+
     ],
 ];

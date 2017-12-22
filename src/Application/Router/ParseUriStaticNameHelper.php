@@ -11,7 +11,10 @@ use Cinema\Controller\ShowFilmController;
 use Exception;
 
 use function explode;
+use Meeting\Controller\CommunityController;
 use Meeting\Controller\MeetingController;
+use Meeting\Controller\ShowMeetingController;
+use Meeting\Controller\UserController;
 use function preg_match;
 use function substr;
 use function urldecode;
@@ -31,14 +34,36 @@ final class ParseUriStaticNameHelper implements ParseUriHelper
         if ($requestUri === '/film') {
             return FilmController::class;
         }
-        if ($requestUri === '/meeting') {
-            return MeetingController::class;
-        }
+
         if (preg_match('#/film/.*#', $requestUri)) {
             $requestUriParams = explode('/', $requestUri);
             $_GET['name'] = urldecode($requestUriParams[2]);
             return ShowFilmController::class;
         }
+
+        if ($requestUri === '/meeting') {
+            return MeetingController::class;
+        }
+
+        if (preg_match('#/meeting/.*#', $requestUri)) {
+            $requestUriParams = explode('/', $requestUri);
+
+            if (preg_match('#/meeting/community/.*#', $requestUri)){
+                $_GET['id'] = urldecode($requestUriParams[3]);
+                return CommunityController::class;
+            }
+
+            if (preg_match('#/meeting/user/.*#', $requestUri)){
+                $_GET['id'] = urldecode($requestUriParams[3]);
+                return UserController::class;
+            }
+
+            $_GET['id'] = urldecode($requestUriParams[2]);
+            return ShowMeetingController::class;
+        }
+
+
+
 
         if (preg_match('#/lecturer/.*#', $requestUri)) {
             $requestUriParams = explode('/', $requestUri);

@@ -1,0 +1,9 @@
+<?php /* @var $meetings \Meeting\Collection\MeetingCollection */ ?>
+<h1>Meetings</h1>
+
+<?php foreach ($meetings->getMeetings() as $meeting) : /* @var $meeting \Meeting\Entity\Meeting */ ?>
+    <ul>
+        <li>Titre: <a href="meeting/<?= urlencode($meeting->getId())?>" > <? echo $meeting->getTitle() ?> </a></li>
+    </ul>
+<?php endforeach ?>
+

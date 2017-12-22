@@ -10,7 +10,7 @@ declare(strict_types=1);
 namespace Meeting\Collection;
 
 
-use Application\Entity\User;
+use Meeting\Entity\User;
 
 class UserCollection
 {

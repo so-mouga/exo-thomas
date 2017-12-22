@@ -29,11 +29,10 @@ class MeetingController
     public function indexAction() : string
     {
 
-        $this->meetingRepository->
-
+        $meetings = $this->meetingRepository->fetchAll();
 
         ob_start();
-        include __DIR__.'/../../../views/meeting/index.phtml';
+        include __DIR__.'/../../../views/meeting/meetings.phtml';
         return ob_get_clean();
     }
 

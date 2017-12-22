@@ -62,9 +62,9 @@ VALUES  (1, 'Kevin Mouga'),
         (2, 'Laurent Lebrun'),
         (3, 'Tristant Test'),
         (4, 'Lucille Lol'),
-        (5, 'Nani Crizo')
-        (6, 'Florent Vela')
-        (7, 'Stephane Bertra')
+        (5, 'Nani Crizo'),
+        (6, 'Florent Vela'),
+        (7, 'Stephane Bertra'),
         (8, 'Justine Belli');
 
 INSERT INTO communities (id, name)
@@ -73,16 +73,52 @@ VALUES  (1, 'La fup'),
         (3, 'ESGI');
 
 INSERT INTO meetings (id, title, description, date_start, date_end, community_id)
-VALUES  (1, 'PHP 7.2', 'Toutes les nouveautées de php', '2018-03-13 02:32:21','2018-03-14 02:32:21',2),
-        (2, 'Symfony 4', 'Toutes les nouveautées de Symfony', '2018-03-15 02:32:21','2018-03-19 02:32:21',1);
+VALUES  (1, 'PHP 7.2', 'Toutes les nouveautees de php', '2018-03-13 02:32:21','2018-03-14 02:32:21',2),
+        (2, 'Symfony 4', 'Toutes les nouveautees de Symfony', '2018-03-15 02:32:21','2018-03-19 02:32:21',1),
+        (3, 'Docker', 'Toutes les nouveautees de Docker', '2017-12-27 08:00:00','2017-12-27 18:30:00',1),
+        (4, 'React', 'Toutes les nouveautees de React', '2017-12-28 08:00:00','2017-12-28 18:30:00',3),
+        (5, 'Javascript', 'Toutes les nouveautees de Javascript', '2017-12-27 08:00:00','2017-12-27 18:30:00',2),
+        (6, 'Css', 'Toutes les nouveautées de Css', '2017-12-27 08:00:00','2017-12-27 18:30:00',3)
+        ;
 
 
 INSERT INTO organisers (meeting_id, user_id)
-VALUES  (1, 3),
-        (2, 1);
-
-INSERT INTO attendees (meeting_id, user_id)
 VALUES  (1, 1),
         (1, 2),
+        (1, 3),
+        (1, 4),
+        (2, 2),
+        (2, 3),
+        (3, 7),
+        (3, 8),
+        (4, 1),
+        (3, 2),
+        (4, 4),
+        (5, 5),
+        (6, 3),
+        (6, 6)
+        ;
+
+INSERT INTO attendees (meeting_id, user_id)
+VALUES  (1, 5),
+        (1, 6),
+        (2, 1),
         (2, 4),
-        (2, 3);
+        (2, 5),
+        (2, 6),
+        (2, 7),
+        (2, 8),
+        (3, 1),
+        (3, 2),
+        (3, 3),
+        (3, 4),
+        (3, 5),
+        (4, 2),
+        (4, 3),
+        (5, 4),
+        (5, 1),
+        (5, 2),
+        (6, 1),
+        (6, 2),
+        (6, 8)
+        ;

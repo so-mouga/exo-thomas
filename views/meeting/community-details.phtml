@@ -1,0 +1,14 @@
+<?php
+/* @var $meetings \Meeting\Collection\MeetingCollection */
+/* @var $community \Meeting\Entity\Community */
+?>
+
+<h1> <? echo $community->getName() ?> </h1>
+
+<?php if ($meetings) :
+    foreach ($meetings->getMeetings() as $meeting) : /* @var $meeting \Meeting\Entity\Meeting */ ?>
+        <ul>
+            <li><? echo $meeting->getTitle() ?> </li>
+        </ul>
+    <?php endforeach;
+endif;?>

@@ -1,0 +1,13 @@
+<?php
+/* @var $user \Meeting\Entity\User */
+/* @var $meetings array */
+?>
+
+<h1> <? echo $user->getName() ?> </h1>
+
+<?php foreach ($meetings as $meeting) :  ?>
+<ul>
+    <li> Meeting <? echo $meeting['meeting_title'] ?> </li>
+    <li>  <? if ($meeting['is_organiser']) echo 'Oranisateur '; else echo 'Participent'?> </li>
+</ul>
+<?php endforeach;?>

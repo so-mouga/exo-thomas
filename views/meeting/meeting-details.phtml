@@ -1,0 +1,35 @@
+<?php
+/* @var $attendees \Meeting\Entity\Attendee */
+/* @var $organisers \Meeting\Entity\Organiser */
+/* @var $meeting \Meeting\Entity\Meeting */
+?>
+
+<h1> <? echo $meeting->getTitle() ?> </h1>
+
+<ul>
+    <li>Description:  <? echo $meeting->getDescription() ?> </li>
+    <li>date: <? /*$meeting->getDateStart() */  ?> </li>
+    <li>Communutée : <a href="community/<?= urlencode($meeting->getCommunity()->getId())?>" >  <? echo $meeting->getCommunity()->getName(); ?></a></li>
+
+    <?php if ($attendees) : ?>
+        <li>Participents : <? echo count($attendees->getUserCollection()->getUsers())?></li>
+        <ul>
+            <?php foreach ($attendees->getUserCollection()->getUsers() as $user) : /* @var $meeting \Meeting\Entity\User */ ?>
+                <li><a href="user/<?= urlencode($user->getId())?>" >  <? echo $user->getName() ?> </a> </li>
+            <?php endforeach ?>
+        </ul>
+    <?php else: ?>
+        <p>Pas de participent</p>
+    <?php endif; ?>
+
+    <?php if ($organisers) : ?>
+        <li>Organisateurs : <? echo count($organisers->getUserCollection()->getUsers())?></li>
+        <ul>
+            <?php foreach ($organisers->getUserCollection()->getUsers() as $user) : /* @var $meeting \Meeting\Entity\User */ ?>
+                <li><a href="user/<?= urlencode($user->getId())?>" >  <? echo $user->getName() ?> </a> </li>
+            <?php endforeach ?>
+        </ul>
+    <?php else: ?>
+        <p>Pas d'organisateur</p>
+    <?php endif; ?>
+</ul>

@@ -5,6 +5,7 @@
  * Date: 15/12/2017
  * Time: 15:26
  */
+declare(strict_types=1);
 
 namespace Meeting\Collection;
 
