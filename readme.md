@@ -31,25 +31,5 @@ Username = demo
 Password = demo
 ~~~
 
-### Structure
-
-~~~
-├── app
-│   └── public
-│       └── index.php
-├── database
-├── docker-compose.yml
-├── fpm
-│   ├── Dockerfile
-│   └── supervisord.conf
-├── nginx
-│   ├── Dockerfile
-│   └── default.conf
-~~~
-
-- `app` :
-Contiendra tous le projet php, Nginx pointe sur le dosier `app/public`.
-- `database` :
-Contient les fichiers SQL avec les requétes à exécuter au démmarage de docker.
 
 
