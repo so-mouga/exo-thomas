@@ -34,7 +34,7 @@ class UserController
     public function indexAction()
     {
         $user = $this->userRepository->findById($_GET['id']);
-        $meetings = $this->userRepository->findAllMeeting($_GET['id']);
+        $meetings = $this->userRepository->findAllMeetingByUser($_GET['id']);
 
         ob_start();
         include __DIR__.'/../../../views/meeting/user-detailles.phtml';

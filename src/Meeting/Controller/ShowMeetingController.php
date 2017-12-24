@@ -5,6 +5,7 @@
  * Date: 21/12/17
  * Time: 11:53
  */
+declare(strict_types=1);
 
 namespace Meeting\Controller;
 
@@ -31,8 +32,7 @@ class ShowMeetingController
 
     public function indexAction()
     {
-        $idMeeting = $_GET['id'];
-        $meeting = $this->meetingRepository->findById($idMeeting);
+        $meeting = $this->meetingRepository->findById(intval($_GET['id']));
         $attendees = $this->meetingRepository->findAllAttendeesByMeeting($meeting);
         $organisers = $this->meetingRepository->findAllOrganisersByMeeting($meeting);
 

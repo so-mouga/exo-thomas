@@ -1,6 +1,6 @@
 <?php
-/* @var $attendees \Meeting\Entity\Attendee */
-/* @var $organisers \Meeting\Entity\Organiser */
+/* @var $attendees \Meeting\Collection\UserCollection */
+/* @var $organisers  \Meeting\Collection\UserCollection */
 /* @var $meeting \Meeting\Entity\Meeting */
 ?>
 
@@ -12,9 +12,9 @@
     <li>Communutée : <a href="community/<?= urlencode($meeting->getCommunity()->getId())?>" >  <? echo $meeting->getCommunity()->getName(); ?></a></li>
 
     <?php if ($attendees) : ?>
-        <li>Participents : <? echo count($attendees->getUserCollection()->getUsers())?></li>
+        <li>Participents : <? echo count($attendees->getUsers())?></li>
         <ul>
-            <?php foreach ($attendees->getUserCollection()->getUsers() as $user) : /* @var $meeting \Meeting\Entity\User */ ?>
+            <?php foreach ($attendees->getUsers() as $user) : /* @var $meeting \Meeting\Entity\User */ ?>
                 <li><a href="user/<?= urlencode($user->getId())?>" >  <? echo $user->getName() ?> </a> </li>
             <?php endforeach ?>
         </ul>
@@ -23,9 +23,9 @@
     <?php endif; ?>
 
     <?php if ($organisers) : ?>
-        <li>Organisateurs : <? echo count($organisers->getUserCollection()->getUsers())?></li>
+        <li>Organisateurs : <? echo count($organisers->getUsers())?></li>
         <ul>
-            <?php foreach ($organisers->getUserCollection()->getUsers() as $user) : /* @var $meeting \Meeting\Entity\User */ ?>
+            <?php foreach ($organisers->getUsers() as $user) : /* @var $meeting \Meeting\Entity\User */ ?>
                 <li><a href="user/<?= urlencode($user->getId())?>" >  <? echo $user->getName() ?> </a> </li>
             <?php endforeach ?>
         </ul>

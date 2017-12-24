@@ -98,7 +98,7 @@ class UserRepository
 
     }
 
-    public function findAllMeeting($id) :array
+    public function findAllMeetingByUser($id) :array
     {
         $statement = $this->database->prepare(
         ' SELECT u.name as user_name, m.id as meeting_id, m.title as meeting_title, description as meeting_description, m.date_start as meeting_date_start, m.date_end as meeting_date_end, c.name as community_id, 1 as is_organiser
@@ -120,11 +120,11 @@ class UserRepository
         $statement->setFetchMode(PDO::FETCH_ASSOC);
         $statement->execute([':id' => $id]);
 
-        if (!$mmetings = $statement->fetchAll()) {
+        if (!$meetings = $statement->fetchAll()) {
             return null;
         }
 
-        return $mmetings;
+        return $meetings;
     }
 
 }

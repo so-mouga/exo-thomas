@@ -5,6 +5,7 @@
  * Date: 15/12/2017
  * Time: 12:26
  */
+declare(strict_types=1);
 
 namespace Meeting\Controller;
 
@@ -28,7 +29,6 @@ class MeetingController
 
     public function indexAction() : string
     {
-
         $meetings = $this->meetingRepository->fetchAll();
 
         ob_start();

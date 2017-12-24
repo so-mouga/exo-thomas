@@ -42,7 +42,7 @@ class MeetingRepository
         $datas = $statement->fetchAll();
         $meetings = [];
         foreach ($datas as $meeting){
-            $meetings[] = new Meeting($meeting['id_meeting'],$meeting['title'],$meeting['description'],new \DateTimeImmutable($meeting['date_start']) ,new \DateTimeImmutable($meeting['date_end']),new Community($meeting['id_community'], $meeting['name']));
+            $meetings[] = new Meeting(intval($meeting['id_meeting']),$meeting['title'],$meeting['description'],new \DateTimeImmutable($meeting['date_start']) ,new \DateTimeImmutable($meeting['date_end']),new Community(intval($meeting['id_community']), $meeting['name']));
         }
         return new MeetingCollection(... $meetings);
     }
@@ -62,10 +62,11 @@ class MeetingRepository
             return null;
         }
 
-        return new Meeting($meeting['id_meeting'],$meeting['title'],$meeting['description'], new \DateTimeImmutable($meeting['date_start']) ,new \DateTimeImmutable($meeting['date_end']),new Community($meeting['id_community'], $meeting['name']));
+
+        return new Meeting(intval($meeting['id_meeting']),$meeting['title'],$meeting['description'], new \DateTimeImmutable($meeting['date_start']) ,new \DateTimeImmutable($meeting['date_end']),new Community(intval($meeting['id_community']), $meeting['name']));
     }
 
-    public function findAllAttendeesByMeeting(Meeting $meeting) :Attendee
+    public function findAllAttendeesByMeeting(Meeting $meeting) :UserCollection
     {
         $statement = $this->database->prepare(
             'SELECT u.id as id_user , u.name 
@@ -88,10 +89,10 @@ class MeetingRepository
             $attendees[] = new User($user['id_user'],$user['name']);
         }
 
-        return new Attendee($meeting, new UserCollection(... $attendees));
+        return  new UserCollection(... $attendees);
     }
 
-    public function findAllOrganisersByMeeting($meeting)
+    public function findAllOrganisersByMeeting($meeting) :UserCollection
     {
         $statement = $this->database->prepare(
             'SELECT u.id as id_user , u.name 
@@ -114,7 +115,7 @@ class MeetingRepository
             $attendees[] = new User($user['id_user'],$user['name']);
         }
 
-        return new Organiser($meeting, new UserCollection(... $attendees));
+        return  new UserCollection(... $attendees);
     }
 
 
